@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movie - View All</title>
+</head>
+<body>
+<h1>Movies</h1>
+<br />
+<a href="/movie/add">Add New Movie</a><br />
+<br />
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Rating</th>
+        <th>Date Watched</th>
+        <th>Actions</th>
+    </tr>
+    <%for(var i = 0; i < movies.length;i++){ %>
+    <tr>
+        <td><%= movies[i].movie_id %></td>
+        <td><%= movies[i].movie_name %></td>
+        <td><%= movies[i].movie_rating %></td>
+        <td><%= movies[i].date_watched %></td>
+
+
+
+        <td>
+            <a href='/movie/edit/?movie_id=<%= movies[i].movie_id %>'>
+                Edit
+            </a>
+        </td>
+    </tr>
+
+    <% } %>
+</table>
+</body>
+</html>
