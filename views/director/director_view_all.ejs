@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Director - View All</title>
+</head>
+<body>
+<h1>Directors</h1>
+<br />
+<a href="/director/add">Add New Director</a><br />
+<br />
+<table border="1">
+    <tr>
+
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Actions</th>
+    </tr>
+    <%for(var i = 0; i < directors.length;i++){ %>
+    <tr>
+
+        <td><%= directors[i].director_first_name %></td>
+        <td><%= directors[i].director_last_name %></td>
+
+
+
+
+        <td>
+            <a href='/director/edit/?director_id=<%= directors[i].director_id %>'>
+                Edit
+            </a>
+        </td>
+    </tr>
+
+    <% } %>
+</table>
+</body>
+</html>

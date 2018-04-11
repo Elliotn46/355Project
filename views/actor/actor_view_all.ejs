@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Actor - View All</title>
+</head>
+<body>
+<h1>Actors</h1>
+<br />
+<a href="/actor/add">Add New Actor</a><br />
+<br />
+<table border="1">
+    <tr>
+
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Actions</th>
+    </tr>
+    <%for(var i = 0; i < actors.length;i++){ %>
+    <tr>
+
+        <td><%= actors[i].actor_first_name %></td>
+        <td><%= actors[i].actor_last_name %></td>
+
+
+
+
+        <td>
+            <a href='/actor/edit/?actor_id=<%= actors[i].actor_id %>'>
+                Edit
+            </a>
+        </td>
+    </tr>
+
+    <% } %>
+</table>
+</body>
+</html>
