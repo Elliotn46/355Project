@@ -20,3 +20,25 @@ exports.insert = function(params, callback) {
         callback(err,result);
     });
 };
+
+
+exports.update = function(params,callback){
+    var query = 'update actor set actor_first_name = ?, actor_last_name = ? where actor_id = ?';
+
+    var queryData = [params.actor_fisrt_name, params.actor_last_name, params.actor_id];
+
+    connection.query(query,queryData, function(err,result){
+
+        callback(err,result);
+
+    });
+};
+
+exports.getinfo = function(actor_id, callback){
+    var query = 'call actor_getinfo(?)';
+    var queryData = [actor_id];
+
+    connection.query(query, queryData,function(err,result){
+        callback(err,result);
+    });
+};

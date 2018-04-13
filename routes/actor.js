@@ -21,4 +21,40 @@ router.get('/all',function(req,res, next)
 
 });
 
+
+router.get('/add',function(req,res){
+    res.render('actor/actor_add');
+});
+
+router.get('/insert', function(req,res){
+    actor_dal.insert(req.query, function(err,result){
+        if(err){
+            console.log(err);
+            res.send(err);
+        }
+        else{
+            res.redirect(302, '/actor/all');
+        }
+    });
+});
+
+
+router.get('/edit',function(req,res){
+    actor_dal.getinfo(req.query.actor_id, function(err,result){
+        res.render('actor/actorUpdate', {actor: result[0][0],
+            description_result: result[1]});
+    }) ;
+});
+
+router.get('/update',function(req,res) {
+    actor_dal.update(req.query, function (err, result) {
+        if (err) {
+            res.send(err);
+        }
+        else {
+            res.redirect(302, '/actor/all')
+        }
+    });
+});
+
 module.exports = router;

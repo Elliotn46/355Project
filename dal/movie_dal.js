@@ -20,3 +20,25 @@ exports.insert = function(params, callback) {
         callback(err,result);
     });
 };
+
+
+exports.update = function(params,callback){
+    var query = 'update movie set movie_name = ? where movie_id = ?';
+
+    var queryData = [params.movie_name,  params.movie_id];
+
+    connection.query(query,queryData, function(err,result){
+
+        callback(err,result);
+
+    });
+};
+
+exports.getinfo = function(movie_id, callback){
+    var query = 'call movie_getinfo(?)';
+    var queryData = [movie_id];
+
+    connection.query(query, queryData,function(err,result){
+        callback(err,result);
+    });
+};

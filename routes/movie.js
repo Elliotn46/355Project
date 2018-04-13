@@ -21,4 +21,48 @@ router.get('/all',function(req,res, next)
 
 });
 
+
+router.get('/add',function(req,res){
+    movie_dal.getAll(function(err,result){
+        if (err){
+            res.send(err);
+        }
+        else{
+            res.render('movie/movie_add', {'movie_result': result[0]});
+        }
+    });
+});
+
+router.get('/insert', function(req,res){
+    movie_dal.insert(req.query, function(err,result){
+        if(err){
+            console.log(err);
+            res.send(err);
+        }
+        else{
+            res.redirect(302, '/movie/all');
+        }
+    });
+});
+
+
+router.get('/edit',function(req,res){
+    movie_dal.getinfo(req.query.movie_id, function(err,result){
+        res.render('movie/movieUpdate', {movie_result: result[0][0],
+            description_result: result[1]});
+    }) ;
+});
+
+router.get('/update',function(req,res) {
+    movie_dal.update(req.query, function (err, result) {
+        if (err) {
+            res.send(err);
+        }
+        else {
+            res.redirect(302, '/movie/all')
+        }
+    });
+});
+
+
 module.exports = router;

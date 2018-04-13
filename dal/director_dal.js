@@ -20,3 +20,25 @@ exports.insert = function(params, callback) {
         callback(err,result);
     });
 };
+
+
+exports.update = function(params,callback){
+    var query = 'update director set director_first_name = ?, director_last_name = ? where director_id = ?';
+
+    var queryData = [params.director_first_name, params.director_last_name, params.director_id];
+
+    connection.query(query,queryData, function(err,result){
+
+        callback(err,result);
+
+    });
+};
+
+exports.getinfo = function(director_id, callback){
+    var query = 'call director_getinfo(?)';
+    var queryData = [director_id];
+
+    connection.query(query, queryData,function(err,result){
+        callback(err,result);
+    });
+};
