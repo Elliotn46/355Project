@@ -7,6 +7,11 @@
 <h1>Add New Movie</h1>
 <form action="/movie/insert" method = "get">
     Movie Name: <input name="movie_name" type="text" />
+    <select name="movie_rating">
+
+        <option value="<%=movie_rating_result[i].movie_rating_id%>" > <%=movie_rating_result[i].rating_number%> </option>
+
+    </select>
 
     <br />
     <input type="submit" />
