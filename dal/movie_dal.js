@@ -3,9 +3,20 @@ var db = require('./db_connection.js');
 
 var connection = mysql.createConnection(db.config);
 
+exports.getRating = function(callback)
+{
+    var query = 'SELECT * from movie_rating;';
+
+
+    connection.query(query,function(err,result){
+        callback(err,result);
+    });
+};
+
 exports.getMovie = function(callback)
 {
     var query = 'SELECT * from movie;';
+
 
     connection.query(query,function(err,result){
         callback(err,result);
@@ -13,9 +24,9 @@ exports.getMovie = function(callback)
 };
 
 exports.insert = function(params, callback) {
-    var query = 'insert into movie (movie_name, movie_rating, date_watched, director_id) values (?,?,?,?)';
+    var query = 'insert into movie (movie_name, rating_number, date_watched, director_id) values (?,?,?,?)';
 
-    var queryData = [params.movie_name,params.movie_rating,params.date_watched,params.director_id];
+    var queryData = [params.movie_name,params.rating_number,params.date_watched,params.director_id];
     connection.query(query,queryData, function(err,result){
         callback(err,result);
     });

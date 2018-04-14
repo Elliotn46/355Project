@@ -23,13 +23,12 @@ router.get('/all',function(req,res, next)
 
 
 router.get('/add',function(req,res){
-    movie_dal.getMovie(function(err,result){
+    movie_dal.getRating(function(err,result){
         if (err){
             res.send(err);
         }
         else{
-            res.render('movie/movie_add', {movie_result: result[0],
-                movie_rating_result: result[1]});
+            res.render('movie/movie_add', {movie_rating_result: result});
         }
     });
 });
@@ -49,7 +48,8 @@ router.get('/insert', function(req,res){
 
 router.get('/edit',function(req,res){
     movie_dal.getinfo(req.query.movie_id, function(err,result){
-        res.render('movie/movieUpdate', {movie_result: result[0][0],
+
+        res.render('movie/MovieUpdate', {movie_result: result[0][0],
             movie_rating_result: result[1]});
     }) ;
 });
