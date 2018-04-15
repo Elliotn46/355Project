@@ -41,8 +41,7 @@ router.get('/insert', function(req,res){
 
 router.get('/edit',function(req,res){
     director_dal.getinfo(req.query.director_id, function(err,result){
-        res.render('director/directorUpdate', {director: result[0][0],
-            description_result: result[1]});
+        res.render('director/DirectorUpdate', {director: result[0][0]});
     }) ;
 });
 

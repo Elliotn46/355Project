@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Actor - Update</title>
+</head>
+<body>
+<h1>Update Actor</h1>
+<form action="/actor/insert" method = "get">
+    Actor Name (First/Last):
+    <input name="actor_first_name" type="text" value="<%= actor.actor_first_name%>"/>
+    <input name="actor_last_name" type="text" value="<%= actor.actor_last_name%>" />
+
+    <br />
+    <input type="submit" />
+</form>
+</body>
+</html>

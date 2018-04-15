@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var movie =  require('./routes/movie');
-var director =  require('./routes/director');
+var director = require('./routes/director');
 var actor =  require('./routes/actor');
 var genre =  require('./routes/genre');
 
@@ -34,6 +34,7 @@ app.use('/movie',movie);
 app.use('/director',director);
 app.use('/actor',actor);
 app.use('/genre',genre);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

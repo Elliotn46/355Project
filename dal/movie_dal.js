@@ -34,9 +34,9 @@ exports.insert = function(params, callback) {
 
 
 exports.update = function(params,callback){
-    var query = 'update movie set movie_name = ? where movie_id = ?';
+    var query = 'update movie set movie_name = ? , rating_number = ? where movie_id = ?';
 
-    var queryData = [params.movie_name,  params.movie_id];
+    var queryData = [params.movie_name, params.rating_number, params.movie_id];
 
     connection.query(query,queryData, function(err,result){
 

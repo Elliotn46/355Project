@@ -13,7 +13,7 @@ exports.getDirector = function(callback)
 };
 
 exports.insert = function(params, callback) {
-    var query = 'insert into director (director_first_name, director_last_name (?,?)';
+    var query = 'insert into director (director_first_name,director_last_name) values (?,?)';
 
     var queryData = [params.director_first_name,params.director_last_name];
     connection.query(query,queryData, function(err,result){
@@ -25,7 +25,7 @@ exports.insert = function(params, callback) {
 exports.update = function(params,callback){
     var query = 'update director set director_first_name = ?, director_last_name = ? where director_id = ?';
 
-    var queryData = [params.director_first_name, params.director_last_name, params.director_id];
+    var queryData = [params.director_fisrt_name, params.director_last_name, params.director_id];
 
     connection.query(query,queryData, function(err,result){
 
