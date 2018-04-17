@@ -11,7 +11,8 @@
     <select name="movie_rating">
 
         <% for(var i=0; movie_rating_result.length > i; i++) {  %>
-            <option value="<%=movie_rating_result[i].movie_rating_id%>"  > <%=movie_rating_result[i].rating_number%> </option>
+            <option value="<%=movie_rating_result[i].movie_rating_id%>"  >
+                <%=movie_rating_result[i].rating_number%> </option>
         <%} %>
 
     </select>
