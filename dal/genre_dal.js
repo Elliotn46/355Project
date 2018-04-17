@@ -13,7 +13,7 @@ exports.getGenre = function(callback)
 };
 
 exports.insert = function(params, callback) {
-    var query = 'insert into genre (genre_name (?)';
+    var query = 'insert into genre (genre_name) values(?)';
 
     var queryData = [params.genre_name];
     connection.query(query,queryData, function(err,result){

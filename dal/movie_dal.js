@@ -26,7 +26,7 @@ exports.getMovie = function(callback)
 exports.insert = function(params, callback) {
     var query = 'insert into movie (movie_name, rating_number, date_watched, director_id) values (?,?,?,?)';
 
-    var queryData = [params.movie_name,params.rating_number,params.date_watched,params.director_id];
+    var queryData = [params.movie_name,params.movie_add_rating,params.date_watched,params.director_id];
     connection.query(query,queryData, function(err,result){
         callback(err,result);
     });
@@ -36,7 +36,7 @@ exports.insert = function(params, callback) {
 exports.update = function(params,callback){
     var query = 'update movie set movie_name = ? , rating_number = ? where movie_id = ?';
 
-    var queryData = [params.movie_name, params.rating_number, params.movie_id];
+    var queryData = [params.movie_name, params.movie_rating, params.movie_id];
 
     connection.query(query,queryData, function(err,result){
 
