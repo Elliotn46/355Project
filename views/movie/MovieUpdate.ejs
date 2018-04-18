@@ -12,14 +12,13 @@
            value="<%= movie_result.movie_id %>"
     />
     Movie Name: <input id="movie_name" name="movie_name" type="text" value="<%= movie_result.movie_name%>"/>
-    <br />
-    <br />
+
     Rating:
     <select name="movie_rating">
         <% for(var i=0; movie_rating_result.length > i; i++)
         {
             var selected ="";
-            if(movie_rating_result[i].movie_rating_id == movie_result.movie_rating_id)
+            if(movie_rating_result[i].rating_number == movie_result.rating_number)
             {
                 selected = "selected";
 
@@ -28,7 +27,11 @@
             <option value="<%=movie_rating_result[i].rating_number%>" <%=selected%> >
                 <%=movie_rating_result[i].rating_number%> </option>
         <%} %>
+
     </select>
+    <br />
+    <br />
+    Date Watched: <input id="date_watched" name="date_watched" type="text" value="<%= movie_result.date_watched%>"/>
     <input type="submit" />
 </form>
 </body>
