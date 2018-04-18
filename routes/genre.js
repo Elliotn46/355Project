@@ -41,8 +41,7 @@ router.get('/insert', function(req,res){
 
 router.get('/edit',function(req,res){
     genre_dal.getinfo(req.query.genre_id, function(err,result){
-        res.render('genre/genreUpdate', {genre: result[0][0],
-            description_result: result[1]});
+        res.render('genre/genreUpdate', {genre: result[0]});
     }) ;
 });
 
