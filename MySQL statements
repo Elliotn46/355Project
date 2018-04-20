@@ -1,0 +1,310 @@
+-- use rnewman_db;
+
+drop table if exists movie_actors;
+drop table if exists release_date;
+drop table if exists genre;
+drop table if exists actor;
+drop table if exists movie;
+drop table if exists director;
+drop table if exists movie_rating;
+
+
+
+
+
+
+
+create table director (director_id int auto_increment primary key, director_first_name varchar (100), 
+director_last_name varchar(100));
+
+create table movie_rating(movie_rating_id int auto_increment primary key, rating_number varchar(50) unique);
+
+create table movie (movie_id int auto_increment primary key, movie_name varchar(100), rating_number varchar(50),
+ date_watched varchar(50), director_id int ,
+Foreign key( director_id )references director    ( director_id ) on delete cascade ,
+Foreign key(rating_number)references movie_rating(rating_number) on delete cascade);
+
+
+create table actor (actor_id int auto_increment primary key, actor_first_name varchar(50), actor_last_name varchar(50));
+
+create table genre (genre_id int auto_increment primary key, genre_name varchar(50));
+
+
+create table release_date( release_date varchar(50), movie_id int ,
+Foreign key (movie_id)references movie(movie_id) on delete cascade);
+
+create table movie_actors ( movie_id int , actor_id int ,
+Foreign key (movie_id)references movie(movie_id) on delete cascade,
+Foreign key (actor_id)references actor(actor_id) on delete cascade);
+
+Insert into director(director_first_name, director_last_name)
+values('Wes' , 'Anderson'); 
+Insert into director(director_first_name, director_last_name)
+values('Steven' , 'Spielberg');
+Insert into director(director_first_name, director_last_name)
+values('Alex' , 'Garland');
+Insert into director(director_first_name, director_last_name)
+values('Christopher' , 'Nolan');
+Insert into director(director_first_name, director_last_name)
+values('Denis' , 'Velleneuve');
+Insert into director(director_first_name, director_last_name)
+values('Edgar' , 'Wright');
+
+-- select * from director;
+
+insert into movie_rating(rating_number)
+values ( '0.0' );
+insert into movie_rating(rating_number)
+values ( '0.5' );
+insert into movie_rating(rating_number)
+values ( '1.0' );
+insert into movie_rating(rating_number)
+values ( '1.5' );
+insert into movie_rating(rating_number)
+values ( '2.0' );
+insert into movie_rating(rating_number)
+values ( '2.5' );
+insert into movie_rating(rating_number)
+values ( '3.0' );
+insert into movie_rating(rating_number)
+values ( '3.5' );
+insert into movie_rating(rating_number)
+values ( '4.0' );
+insert into movie_rating(rating_number)
+values ( '4.5' );
+insert into movie_rating(rating_number)
+values ( '5.0' );
+insert into movie_rating(rating_number)
+values ( '5.5' );
+insert into movie_rating(rating_number)
+values ( '6.0' );
+insert into movie_rating(rating_number)
+values ( '6.5' );
+insert into movie_rating(rating_number)
+values ( '7.0' );
+insert into movie_rating(rating_number)
+values ( '7.5' );
+insert into movie_rating(rating_number)
+values ( '8.0' );
+insert into movie_rating(rating_number)
+values ( '8.5' );
+insert into movie_rating(rating_number)
+values ( '9.0' );
+insert into movie_rating(rating_number)
+values ( '9.5' );
+insert into movie_rating(rating_number)
+values ( '10.0' );
+
+insert into movie(movie_name, rating_number, date_watched,director_id)
+values('Isle of Dogs', '9.0' , '2018-04-09' , 1);
+insert into movie(movie_name, rating_number, date_watched,director_id)
+values('Ready Player One', '9.0' , '2018-04-07' , 2);
+insert into movie(movie_name, rating_number, date_watched,director_id)
+values('The Dark Night', '10.0' , '2008-04-09' , 4);
+
+insert into movie(movie_name, rating_number, date_watched,director_id)
+values('Annihilation', '9.0' , '2018-02-25' , 3);
+
+
+Insert into actor(actor_first_name, actor_last_name)
+values('Edward' , 'Norton');
+Insert into actor(actor_first_name, actor_last_name)
+values('Chistian' , 'Bale');
+Insert into actor(actor_first_name, actor_last_name)
+values('Natilie' , 'Portman');
+
+insert into genre(genre_name)
+values ( 'Comedy');
+insert into genre(genre_name)
+values ( 'Action');
+insert into genre(genre_name)
+values ( 'Science-Fiction');
+select * from movie;
+
+insert into release_date( release_date , movie_id )
+values ( '2018-04-07' , 1);
+insert into release_date(release_date , movie_id)
+values ( '2018-2-23' , 4);
+
+-- select * from movie;
+
+insert into movie_actors(movie_id, actor_id)
+values( 1, 1);
+insert into movie_actors(movie_id, actor_id)
+values( 3, 2);
+insert into movie_actors(movie_id, actor_id)
+values( 4, 3);
+
+-- select * from movie;
+
+
+delimiter //
+
+create procedure movie_getall()
+begin
+
+select * from movie;
+
+end //
+
+delimiter ;
+
+
+delimiter //
+
+create procedure movie_insert(_movie_name varchar(50) , _rating_number varchar(50), _date_watched varchar(50), _director_id int)
+begin
+
+insert into movie (movie_name, rating_number, date_watched, director_id) value (_movie_name , _rating_number , _date_watched , _director_id);
+
+end //
+
+delimiter ;
+
+
+
+call movie_getinfo(3);
+
+
+delimiter //
+
+create procedure movie_getinfo (_movie_id int)
+begin 
+
+select * from movie where movie_id = _movie_id;
+
+
+select * from movie_rating
+order by movie_rating_id;
+
+
+END //
+
+delimiter ;
+
+drop procedure if exists movie_insert;
+
+delimiter //
+
+create procedure movie_delete(_movie_id int)
+begin
+	delete from movie where movie_id = _movie_id;
+    
+    end //
+    
+delimiter ;
+
+
+delimiter //
+
+create procedure directors_getall()
+begin
+
+select * from director;
+
+end //
+
+delimiter ;
+
+call director_getall();
+
+
+delimiter //
+
+create procedure director_getinfo (_director_id int)
+begin 
+
+select * from director where director_id = _director_id;
+
+END //
+
+delimiter ;
+
+drop procedure if exists director_getinfo;
+
+delimiter //
+
+create procedure director_delete(_director_id int)
+begin
+	delete from director where director_id = _director_id;
+    
+    end //
+    
+delimiter ;
+
+delimiter //
+
+create procedure actors_getall()
+begin
+
+select * from actor;
+
+end //
+
+delimiter ;
+
+call actor_getall();
+
+
+delimiter //
+
+create procedure actor_getinfo (_actor_id int)
+begin 
+
+select * from actor where actor_id = _actor_id;
+
+END //
+
+delimiter ;
+
+drop procedure if exists actor_getinfo;
+
+delimiter //
+
+create procedure actor_delete(_actor_id int)
+begin
+	delete from actor where actor_id = _actor_id;
+    
+    end //
+    
+delimiter ;
+
+delimiter //
+
+create procedure genres_getall()
+begin
+
+select * from genre;
+
+end //
+
+delimiter ;
+
+call genre_getall();
+
+
+delimiter //
+
+create procedure genre_getinfo (_genre_id int)
+begin 
+
+select * from genre where genre_id = _genre_id;
+
+END //
+
+delimiter ;
+
+drop procedure if exists genre_getinfo;
+
+delimiter //
+
+create procedure genre_delete(_genre_id int)
+begin
+	delete from genre where genre_id = _genre_id;
+    
+    end //
+    
+delimiter ;
+
+
+select * from genre;
