@@ -4,6 +4,7 @@
     <title>Genre - View All</title>
 </head>
 <body>
+<a href="http://localhost:3000/">Home</a><br /><br />
 <h1>Genres</h1>
 <br />
 <a href="/genre/add">Add New Genre</a><br />
@@ -18,11 +19,6 @@
     <tr>
 
         <td><%= genres[i].genre_name %></td>
-
-
-
-
-
         <td>
             <a href='/genre/edit/?genre_id=<%= genres[i].genre_id %>'>
                 Edit
