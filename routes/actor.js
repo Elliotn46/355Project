@@ -42,7 +42,7 @@ router.get('/insert', function(req,res){
 router.get('/edit',function(req,res){
     actor_dal.getinfo(req.query.actor_id, function(err,result){
         res.render('actor/actorUpdate', {actor: result[0][0]});
-    }) ;
+    });
 });
 
 router.get('/update',function(req,res) {

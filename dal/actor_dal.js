@@ -25,7 +25,7 @@ exports.insert = function(params, callback) {
 exports.update = function(params,callback){
     var query = 'update actor set actor_first_name = ?, actor_last_name = ? where actor_id = ?';
 
-    var queryData = [params.actor_fisrt_name, params.actor_last_name, params.actor_id];
+    var queryData = [params.actor_first_name, params.actor_last_name, params.actor_id];
 
     connection.query(query,queryData, function(err,result){
 

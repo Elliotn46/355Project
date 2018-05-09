@@ -6,11 +6,19 @@
 <body>
 <h1>Update Actor</h1>
 <form action="/actor/update" method = "get">
+
     Actor Name (First/Last):
     <input name="actor_first_name" type="text" value="<%= actor.actor_first_name%>"/>
     <input name="actor_last_name" type="text" value="<%= actor.actor_last_name%>" />
 
     <br />
+
+    <input type="hidden"
+           id="actor_id"
+           name="actor_id"
+           value="<%= actor.actor_id %>"
+    />
+
     <input type="submit" />
 </form>
 </body>
