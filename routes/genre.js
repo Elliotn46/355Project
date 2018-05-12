@@ -56,4 +56,19 @@ router.get('/update',function(req,res) {
     });
 });
 
+router.get('/delete', function(req, res) {
+    genre_dal.delete(req.query.genre_id, function(err, result){
+        if(err) {
+            res.render('genre/genre_view_all', {genre: result, was_successful: false});
+        }
+        else {
+            // res.redirect(302, '/genre/all');
+            //res.redirect(302, '/genre/all', { was_successful: true})
+            genre_dal.getGenre(function (err, result) {
+                res.render('genre/genre_view_all', {genres: result, was_successful: true});
+            });
+        }
+    });
+});
+
 module.exports = router;

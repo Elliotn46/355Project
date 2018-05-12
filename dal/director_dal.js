@@ -42,3 +42,11 @@ exports.getinfo = function(director_id, callback){
         callback(err,result);
     });
 };
+exports.delete = function(director_id, callback) {
+    var query = 'DELETE FROM director WHERE director_id = ?';
+    var queryData = [director_id];
+
+    connection.query(query, queryData, function(err, result) {
+        callback(err, result);
+    });
+};

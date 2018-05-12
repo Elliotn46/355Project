@@ -55,5 +55,19 @@ router.get('/update',function(req,res) {
         }
     });
 });
+router.get('/delete', function(req, res) {
+    director_dal.delete(req.query.director_id, function(err, result){
+        if(err) {
+            res.render('director/director_view_all', {director: result, was_successful: false});
+        }
+        else {
+            // res.redirect(302, '/director/all');
+            //res.redirect(302, '/director/all', { was_successful: true})
+            director_dal.getDirector(function (err, result) {
+                res.render('director/director_view_all', {directors: result, was_successful: true});
+            });
+        }
+    });
+});
 
 module.exports = router;

@@ -42,3 +42,12 @@ exports.getinfo = function(params, callback){
         callback(err,result);
     });
 };
+
+exports.delete = function(genre_id, callback) {
+    var query = 'DELETE FROM genre WHERE genre_id = ?';
+    var queryData = [genre_id];
+
+    connection.query(query, queryData, function(err, result) {
+        callback(err, result);
+    });
+};

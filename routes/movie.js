@@ -65,5 +65,18 @@ router.get('/update',function(req,res) {
     });
 });
 
-
+router.get('/delete', function(req, res) {
+    movie_dal.delete(req.query.movie_id, function(err, result){
+        if(err) {
+            res.render('movie/movie_view_all', {movie: result, was_successful: false});
+        }
+        else {
+            // res.redirect(302, '/movie/all');
+            //res.redirect(302, '/movie/all', { was_successful: true})
+            movie_dal.getMovie(function (err, result) {
+                res.render('movie/movie_view_all', {movies: result, was_successful: true});
+            });
+        }
+    });
+});
 module.exports = router;

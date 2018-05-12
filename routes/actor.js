@@ -56,4 +56,19 @@ router.get('/update',function(req,res) {
     });
 });
 
+router.get('/delete', function(req, res) {
+    actor_dal.delete(req.query.actor_id, function(err, result){
+        if(err) {
+            res.render('actor/actor_view_all', {actor: result, was_successful: false});
+        }
+        else {
+            // res.redirect(302, '/actor/all');
+            //res.redirect(302, '/actor/all', { was_successful: true})
+            actor_dal.getActor(function (err, result) {
+                res.render('actor/actor_view_all', {actors: result, was_successful: true});
+            });
+        }
+    });
+});
+
 module.exports = router;

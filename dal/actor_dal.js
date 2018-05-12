@@ -42,3 +42,12 @@ exports.getinfo = function(actor_id, callback){
         callback(err,result);
     });
 };
+
+exports.delete = function(actor_id, callback) {
+    var query = 'DELETE FROM actor WHERE actor_id = ?';
+    var queryData = [actor_id];
+
+    connection.query(query, queryData, function(err, result) {
+        callback(err, result);
+    });
+};

@@ -53,3 +53,12 @@ exports.getinfo = function(movie_id, callback){
         callback(err,result);
     });
 };
+
+exports.delete = function(movie_id, callback) {
+    var query = 'DELETE FROM movie WHERE movie_id = ?';
+    var queryData = [movie_id];
+
+    connection.query(query, queryData, function(err, result) {
+        callback(err, result);
+    });
+};
