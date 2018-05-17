@@ -23,8 +23,8 @@ exports.getQuery1 = function(movie_id, callback){
 };
 
 exports.getQuery2 = function(movie_id, callback){
-    var query = 'select movie_name from movie ' +
-    ' left join movie_rating on movie.rating_number = movie_rating.rating_number;';
+    var query = 'select * from movie ' +
+    'join director on movie.director_id = director.director_id;';
     var queryData = [movie_id];
 
     connection.query(query, queryData,function(err,result){

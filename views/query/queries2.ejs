@@ -5,16 +5,19 @@
 </head>
 <body>
 <a href="http://localhost:3000/">Home</a><br /><br />
-<h1>Query 1 Subquery</h1>
+<h1>Query 2 Join</h1>
 <br />
 <pre>
-select movie_name from movie
-where rating_number in ( select rating_number from movie where rating_number >= 9);
+    select * from movie
+    join director on movie.director_id = director.director_id;
 </pre>
 <table border="1">
     <tr>
 
-        <th>Name</th>
+        <th>Movie Name</th>
+        <th>Director First Name</th>
+        <th>Director Last Name</th>
+
 
 
     </tr>
@@ -22,7 +25,8 @@ where rating_number in ( select rating_number from movie where rating_number >= 
     <tr>
 
         <td><%= q_result1[i].movie_name %></td>
-
+        <td><%= q_result1[i].director_first_name %></td>
+        <td><%= q_result1[i].director_last_name %></td>
     </tr>
 
     <% } %>
