@@ -41,8 +41,7 @@ exports.getQuery3 = function(movie_id, callback){
     });
 };
 exports.getQuery4 = function(movie_id, callback){
-    var query = 'select movie_name from movie\n' +
-        'where rating_number in ( select rating_number from movie where rating_number >= 9);';
+    var query = '';
     var queryData = [movie_id];
 
     connection.query(query, queryData,function(err,result){
@@ -50,8 +49,7 @@ exports.getQuery4 = function(movie_id, callback){
     });
 };
 exports.getQuery5 = function(movie_id, callback){
-    var query = 'select movie_name from movie\n' +
-        'where rating_number in ( select rating_number from movie where rating_number >= 9);';
+    var query = '';
     var queryData = [movie_id];
 
     connection.query(query, queryData,function(err,result){
@@ -59,8 +57,9 @@ exports.getQuery5 = function(movie_id, callback){
     });
 };
 exports.getQuery6 = function(movie_id, callback){
-    var query = 'select movie_name from movie\n' +
-        'where rating_number in ( select rating_number from movie where rating_number >= 9);';
+    var query = 'select movie_name from movie m\n' +
+        'left join movie_rating mr on m.rating_number = mr.rating_number\n' +
+        'group by m.rating_number;';
     var queryData = [movie_id];
 
     connection.query(query, queryData,function(err,result){
@@ -68,8 +67,7 @@ exports.getQuery6 = function(movie_id, callback){
     });
 };
 exports.getQuery7 = function(movie_id, callback){
-    var query = 'select movie_name from movie\n' +
-        'where rating_number in ( select rating_number from movie where rating_number >= 9);';
+    var query = '';
     var queryData = [movie_id];
 
     connection.query(query, queryData,function(err,result){
@@ -77,8 +75,7 @@ exports.getQuery7 = function(movie_id, callback){
     });
 };
 exports.getQuery8 = function(movie_id, callback){
-    var query = 'select movie_name from movie\n' +
-        'where rating_number in ( select rating_number from movie where rating_number >= 9);';
+    var query = '';
     var queryData = [movie_id];
 
     connection.query(query, queryData,function(err,result){
@@ -86,8 +83,7 @@ exports.getQuery8 = function(movie_id, callback){
     });
 };
 exports.getQuery9 = function(movie_id, callback){
-    var query = 'select movie_name from movie\n' +
-        'where rating_number in ( select rating_number from movie where rating_number >= 9);';
+    var query = '';
     var queryData = [movie_id];
 
     connection.query(query, queryData,function(err,result){
@@ -95,8 +91,7 @@ exports.getQuery9 = function(movie_id, callback){
     });
 };
 exports.getQuery10 = function(movie_id, callback){
-    var query = 'select movie_name from movie\n' +
-        'where rating_number in ( select rating_number from movie where rating_number >= 9);';
+    var query = '';
     var queryData = [movie_id];
 
     connection.query(query, queryData,function(err,result){
