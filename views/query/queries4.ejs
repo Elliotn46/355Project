@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Queries</title>
+</head>
+<body>
+<a href="http://localhost:3000/">Home</a><br /><br />
+<h1>Query 4 EXISTS</h1>
+<br />
+<pre>
+    select * from director
+    where exists ( select * from movie m
+    where m.director_id = director.director_id and m.rating_number = 9);
+
+</pre>
+<table border="1">
+    <tr>
+
+        <th>Director First Name</th>
+        <th>Director Last Name</th>
+
+
+    </tr>
+    <%for(var i = 0; i < q_result1.length;i++){ %>
+    <tr>
+
+        <td><%= q_result1[i].director_first_name %></td>
+        <td><%= q_result1[i].director_last_name %></td>
+    </tr>
+
+    <% } %>
+</table>
+
+</body>
+</html>

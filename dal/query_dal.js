@@ -33,7 +33,7 @@ exports.getQuery2 = function(movie_id, callback){
 };
 exports.getQuery3 = function(movie_id, callback){
     var query = 'select movie_name from movie\n' +
-    'where rating_number in ( select rating_number from movie where rating_number >= 9);';
+    ' where rating_number in ( select rating_number from movie where rating_number <=5);';
     var queryData = [movie_id];
 
     connection.query(query, queryData,function(err,result){
@@ -41,7 +41,10 @@ exports.getQuery3 = function(movie_id, callback){
     });
 };
 exports.getQuery4 = function(movie_id, callback){
-    var query = '';
+    var query = '\n' +
+        'select * from director\n' +
+        'where exists ( select * from movie m\n' +
+        '                where m.director_id = director.director_id and m.rating_number = 9);';
     var queryData = [movie_id];
 
     connection.query(query, queryData,function(err,result){
