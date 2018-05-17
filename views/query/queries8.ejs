@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Queries</title>
+</head>
+<body>
+<a href="http://localhost:3000/">Home</a><br /><br />
+<h1>Query 8 ORDER BY</h1>
+<br />
+<pre>
+select movie_name , movie.rating_number from movie
+left join movie_rating on movie.rating_number = movie_rating.rating_number
+order by movie_rating_id;
+</pre>
+<table border="1">
+    <tr>
+
+        <th>Name</th>
+        <th>Rating Number</th>
+
+
+    </tr>
+    <%for(var i = 0; i < q_result1.length;i++){ %>
+    <tr>
+
+        <td><%= q_result1[i].movie_name %></td>
+        <td><%= q_result1[i].rating_number %></td>
+
+    </tr>
+
+    <% } %>
+</table>
+
+</body>
+</html>

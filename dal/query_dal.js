@@ -70,7 +70,10 @@ exports.getQuery6 = function(movie_id, callback){
     });
 };
 exports.getQuery7 = function(movie_id, callback){
-    var query = '';
+    var query = 'select movie_name from movie m\n' +
+        'left join movie_rating mr on m.rating_number = mr.rating_number\n' +
+        'group by m.rating_number\n' +
+        'having  m.rating_number >= avg(m.rating_number) ;';
     var queryData = [movie_id];
 
     connection.query(query, queryData,function(err,result){
@@ -78,7 +81,9 @@ exports.getQuery7 = function(movie_id, callback){
     });
 };
 exports.getQuery8 = function(movie_id, callback){
-    var query = '';
+    var query = 'select movie_name , movie.rating_number from movie\n' +
+        'left join movie_rating on movie.rating_number = movie_rating.rating_number\n' +
+        'order by movie_rating_id;';
     var queryData = [movie_id];
 
     connection.query(query, queryData,function(err,result){

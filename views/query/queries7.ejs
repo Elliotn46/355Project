@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Queries</title>
+</head>
+<body>
+<a href="http://localhost:3000/">Home</a><br /><br />
+<h1>Query 7 JOIN, GROUP BY, HAVING </h1>
+<br />
+<pre>
+select movie_name from movie m
+left join movie_rating mr on m.rating_number = mr.rating_number
+group by m.rating_number
+having  m.rating_number <= avg(m.rating_number) ;
+</pre>
+<table border="1">
+    <tr>
+
+        <th>Name</th>
+
+
+    </tr>
+    <%for(var i = 0; i < q_result1.length;i++){ %>
+    <tr>
+
+        <td><%= q_result1[i].movie_name %></td>
+
+    </tr>
+
+    <% } %>
+</table>
+
+</body>
+</html>
