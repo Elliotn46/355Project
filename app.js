@@ -11,6 +11,7 @@ var movie =  require('./routes/movie');
 var director = require('./routes/director');
 var actor =  require('./routes/actor');
 var genre =  require('./routes/genre');
+var query = require('./routes/query');
 
 var app = express();
 
@@ -34,7 +35,7 @@ app.use('/movie',movie);
 app.use('/director',director);
 app.use('/actor',actor);
 app.use('/genre',genre);
-
+app.use('/query',query);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

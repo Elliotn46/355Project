@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Queries</title>
+</head>
+<body>
+<a href="http://localhost:3000/">Home</a><br /><br />
+<h1>Query 1</h1>
+<br />
+<pre>
+select movie_name from movie
+where rating_number in ( select rating_number from movie where rating_number >= 9);
+</pre>
+<table border="1">
+    <tr>
+
+        <th>Name</th>
+
+
+    </tr>
+    <%for(var i = 0; i < q_result1.length;i++){ %>
+    <tr>
+
+        <td><%= q_result1[i].movie_name %></td>
+
+    </tr>
+
+    <% } %>
+</table>
+
+</body>
+</html>

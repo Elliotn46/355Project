@@ -80,11 +80,5 @@ router.get('/delete', function(req, res) {
     });
 });
 
-router.get('/query',function(req,res){
-    movie_dal.getQuery(req.query.movie_id, function(err,result){
 
-        res.render('movie/queries', {q_result1: result[0], q_result2: result[1], q_result3: result[2]
-        });
-    }) ;
-});
 module.exports = router;
