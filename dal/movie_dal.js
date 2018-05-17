@@ -62,3 +62,12 @@ exports.delete = function(movie_id, callback) {
         callback(err, result);
     });
 };
+
+exports.getQuery = function(movie_id, callback){
+    var query = 'call query_procedure(?)';
+    var queryData = [movie_id];
+
+    connection.query(query, queryData,function(err,result){
+        callback(err,result);
+    });
+};
