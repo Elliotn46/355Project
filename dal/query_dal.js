@@ -103,7 +103,8 @@ exports.getQuery9 = function(movie_id, callback){
     });
 };
 exports.getQuery10 = function(movie_id, callback){
-    var query = '';
+    var query = 'select distinct rating_number\n' +
+        'from movie;';
     var queryData = [movie_id];
 
     connection.query(query, queryData,function(err,result){
