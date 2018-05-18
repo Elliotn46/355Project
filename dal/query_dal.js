@@ -91,7 +91,11 @@ exports.getQuery8 = function(movie_id, callback){
     });
 };
 exports.getQuery9 = function(movie_id, callback){
-    var query = '';
+    var query = 'select count(*) from movie\n' +
+        'union \n' +
+        'select count(*) from director\n' +
+        'union \n' +
+        'select count(*) from actor;';
     var queryData = [movie_id];
 
     connection.query(query, queryData,function(err,result){

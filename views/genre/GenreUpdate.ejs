@@ -7,17 +7,18 @@
 
 <h1>Update Genre</h1>
 <form action="/genre/update" method = "get">
-    Genre:
-    <input id="genre_name" name="genre_name" type="text" value="<%= genre.genre_name%>"/>
-
-
-    <br />
     <input type="hidden"
            id="genre_id"
            name="genre_id"
            value="<%= genre.genre_id %>"
     />
     <input type="submit" />
+    Genre:
+    <input id="genre_id" name="genre_name" type="text" value="<%= genre.genre_name%>"/>
+
+
+    <br />
+
 </form>
 </body>
 </html>

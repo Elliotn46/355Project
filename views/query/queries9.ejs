@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Queries</title>
+</head>
+<body>
+<a href="http://localhost:3000/">Home</a><br /><br />
+<h1>Query 9 UNION</h1>
+<br />
+<pre>
+select count(*) from movie
+union
+select count(*) from director
+union
+select count(*) from actor;
+</pre>
+<table border="1">
+    <tr>
+
+        <th>Count</th>
+
+
+    </tr>
+    <%for(var i = 0; i < q_result1.length;i++){ %>
+    <tr>
+
+        <td><%= q_result1[i]['count(*)'] %></td>
+
+    </tr>
+
+    <% } %>
+</table>
+
+</body>
+</html>
