@@ -34,9 +34,9 @@ exports.update = function(params,callback){
     });
 };
 
-exports.getinfo = function(params, callback){
+exports.getinfo = function(genre_id, callback){
     var query = 'call genre_getinfo(?)';
-    var queryData = [params.genre_id];
+    var queryData = [genre_id];
 
     connection.query(query, queryData,function(err,result){
         callback(err,result);
